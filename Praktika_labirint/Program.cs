@@ -133,7 +133,9 @@ namespace labirint
                 int create_enemy_y = random.Next(1, max_i_map);
 
                 //цикл для перебора возможных рандомных позиций врага 
-                while (map[create_enemy_y, create_enemy_x] == user || map[create_enemy_y, create_enemy_x] == exit || map[create_enemy_y, create_enemy_x] == wall)  //будет создан один враг
+                while (map[create_enemy_y, create_enemy_x] == user || 
+                    map[create_enemy_y, create_enemy_x] == exit || 
+                    map[create_enemy_y, create_enemy_x] == wall)  //будет создан один враг
                 {
                     create_enemy_x = random.Next(1, max_j_map);
                     create_enemy_y = random.Next(1, max_i_map);
@@ -152,6 +154,7 @@ namespace labirint
                     {
                         for (int j = 0; j < map.GetLength(1); j++)
                         {
+                            Console.SetCursorPosition(j + 6, i + 3);
                             Console.Write(map[i, j]);
                         }
 
@@ -217,11 +220,14 @@ namespace labirint
                         case ConsoleKey.Q:  //использование подсказки
 
                             //выводим карту(help_map) на консолль
-                            Console.WriteLine("\r\n\r\n** ПРАВИЛЬНЫЙ ПУТЬ **\r\n");
+                            Console.SetCursorPosition(80, 1);
+                            Console.WriteLine("** ПРАВИЛЬНЫЙ ПУТЬ **");
+
                             for (int i = 0; i < help_map.GetLength(0); i++)
                             {
                                 for (int j = 0; j < help_map.GetLength(1); j++)
                                 {
+                                    Console.SetCursorPosition(j + 70, i + 3);
                                     Console.Write(help_map[i, j]);
                                 }
 
